@@ -6,6 +6,7 @@ Use Playbooks from an MCP-enabled editor. Install the skill for your task or ins
 | --- | --- |
 | `playbooks` | Connect to Playbooks and find authorized Workspaces and resources. |
 | `playbooks-workspaces` | Manage membership and sharing, inspect Workspace settings and connections, and review usage and budget. |
+| `playbooks-chats` | Review Chat history, work with supplied files, and follow Operator requests to their results. |
 | `playbooks-projects` | Inspect a Project and work with its Operator. |
 | `playbooks-workflows` | Inspect, create, and revise Workflow drafts, then open the app to run or activate them. |
 | `playbooks-artifacts` | Locate, prepare, and export exact saved Artifact checkpoints. |
