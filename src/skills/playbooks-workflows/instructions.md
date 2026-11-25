@@ -1,0 +1,20 @@
+---
+name: playbooks-workflows
+description: Inspect, create, or revise a Playbooks Workflow draft from an editor. Use for repeatable processes with task dependencies, handoffs, branches, or approvals, and for handing a saved draft to its operator for review.
+---
+
+Read [the MCP guide](references/using-playbooks-mcp.md) for connection setup. Workflow draft tools require the `workspace` toolset. If it is missing, retain the default toolsets when adding it, reconnect, and check the enabled schemas with `playbooks_help`.
+
+1. Use a Workflow for a process that needs explicit order, branching, handoffs, or review. Use a Schedule for one recurring assignment. Resolve the Workspace with `playbooks_workspace_list`. For an existing Workflow, call `playbooks_workspace_workflows`, then `playbooks_workspace_workflow` with the Workspace and Workflow IDs. Read the current revision and full definition before proposing an edit.
+2. Translate the request into a trigger, tasks, handoffs, any review gates, and a deliverable. Use exactly one trigger. For manual runs, declare any required text fields in `manualInputs`. For scheduled runs, configure recurrence and the time zone and give the tasks authorized inputs they can obtain without a person supplying run fields. Select existing Agents or Projects using their returned resource IDs and review who can access each target. Chat steps start fresh private Chats. Agent and Project steps start fresh conversations within their selected resources. An LLM step runs direct inference.
+3. Use `dependsOn` for ordering and `inputs` to bind the results a step receives. Declare named results on the producing steps. Tasks that can run in parallel can share a predecessor. For Conditions, declare the supported comparison and map each branch to the required true or false outcome. Bind an Approval's review material and an Output's retained results explicitly. For an Agent step, use structured input bindings only for eligible upstream Chat Artifact results. Declare the Chat's `artifactOutput` as a named result when that exact checkpoint is needed. Check the recipient's authority before passing private data into an Agent or Project conversation. Choose execution limits appropriate to the process and validate the graph against the enabled schema.
+4. Save the authorized private, inactive draft with `playbooks_workspace_workflow_create`. To edit a draft, use `playbooks_workspace_workflow_update` with the reviewed `expectedRevision`. If changing the definition, include the complete graph and any canvas notes to retain. On a revision conflict, read the latest draft and reconcile the proposed edit. After an uncertain creation or update, inspect Workspace drafts or the selected Workflow before retrying.
+5. Return the saved canvas URL and summarize the trigger, tasks, review gate, deliverable, and unresolved setup. The draft tools stop at authoring. Use the Playbooks app to run the Workflow, enable recurrence, review the exact waiting step, or manage access. The app's History shows the saved revision and step evidence for each run. Check the actual run outcome and result before reporting that the process succeeded.
+
+## Worked request
+
+> Build a Workflow that turns pasted feedback into a brief, pauses for review, and keeps the approved result.
+
+Declare a manual input named `notes`. Bind the Trigger's `notes` result into a Chat task and instruct it to summarize setup and billing feedback, reporting the summary as the declared `brief` result. Make Approval wait for the Chat and bind `brief` as review material. Make Output wait for Approval and bind `brief` from the Chat as the result to keep. Save the draft and return its canvas URL. In the app, an authorized operator can run it with sample feedback, review the brief, approve the waiting step, and open the final result.
+
+See the [Workflow quickstart](https://www.playbooks.ai/docs/workflows/quickstart) for app controls and [Steps and handoffs](https://www.playbooks.ai/docs/workflows/steps) for step behavior.

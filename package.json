@@ -1,0 +1,12 @@
+{
+  "name": "playbooks-skills",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Portable developer skills for Playbooks.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "commit": "bash scripts/commit.sh",
+    "deploy": "bash scripts/deploy.sh"
+  }
+}
