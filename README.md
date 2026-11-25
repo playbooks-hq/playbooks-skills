@@ -10,6 +10,7 @@ Use Playbooks from an MCP-enabled editor. Install the skill for your task or ins
 | `playbooks-agents` | Configure reusable Agents, review caller and resource grants, and follow executions. |
 | `playbooks-projects` | Inspect a Project and work with its Operator. |
 | `playbooks-sites` | Inspect production Sites, review and deploy revisions, and recover retained releases. |
+| `playbooks-templates` | Discover and remix reusable Templates, review draft contents, and publish versions. |
 | `playbooks-workflows` | Inspect, create, and revise Workflow drafts, then open the app to run or activate them. |
 | `playbooks-artifacts` | Locate, prepare, and export exact saved Artifact checkpoints. |
 
