@@ -5,6 +5,7 @@ Use Playbooks from an MCP-enabled editor. Install the skill for your task or ins
 | Skill | Use it to |
 | --- | --- |
 | `playbooks` | Connect to Playbooks and find authorized Workspaces and resources. |
+| `playbooks-workspaces` | Manage membership and sharing, inspect Workspace settings and connections, and review usage and budget. |
 | `playbooks-projects` | Inspect a Project and work with its Operator. |
 | `playbooks-workflows` | Inspect, create, and revise Workflow drafts, then open the app to run or activate them. |
 | `playbooks-artifacts` | Locate, prepare, and export exact saved Artifact checkpoints. |
@@ -13,7 +14,7 @@ Each specialist includes the connection and resource guidance it needs to work o
 
 ## Install
 
-Use Node.js 22.20 or newer. Install the Playbooks CLI, authenticate with a scoped developer API key, and register MCP for your editor.
+Use Node.js 22.20 or newer. Install the Playbooks CLI, sign in, and register MCP for your editor.
 
 ```sh
 npm install --global @playbooks/cli@^1
@@ -22,7 +23,7 @@ playbooks status
 playbooks mcp install codex
 ```
 
-For Claude Code, use `playbooks mcp install claude`. Reconnect your editor after registration.
+If your CLI build supports browser sign-in, review and allow access in Playbooks, then return to the terminal. CLI 1.0.0 prompts for a scoped developer API key from Account settings. For Claude Code, use `playbooks mcp install claude`. Reconnect your editor after registration.
 
 Run one of the following commands from the project where you want the skills installed. Replace `playbooks-workflows` with any name in the table, or use `--agent claude-code` for Claude Code.
 
