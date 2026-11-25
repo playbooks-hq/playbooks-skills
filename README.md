@@ -29,6 +29,8 @@ playbooks mcp install codex
 
 If your CLI build supports browser sign-in, review and allow access in Playbooks, then return to the terminal. CLI 1.0.0 prompts for a scoped developer API key from Account settings. For Claude Code, use `playbooks mcp install claude`. Reconnect your editor after registration.
 
+The npm 1.0.0 clients support the Workspace and Project reads in the example below. Workflow drafts, retained Artifacts, and some Chat, Agent, Site, and Template operations require newer Clients code. The [public Clients staging branch](https://github.com/playbooks-hq/playbooks-clients/tree/staging) contains these client changes ahead of an npm release. If you already have a compatible source build, configure your editor to run its MCP executable with the CLI from the same checkout. `playbooks mcp install` configures the npm MCP package. Use `playbooks_help` after connecting to verify the tools needed for your task.
+
 Run one of the following commands from the project where you want the skills installed. Replace `playbooks-workflows` with any name in the table, or use `--agent claude-code` for Claude Code.
 
 ```sh
