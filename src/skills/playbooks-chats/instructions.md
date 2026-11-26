@@ -1,6 +1,6 @@
 ---
 name: playbooks-chats
-description: Find, create, and continue Playbooks Chats from an editor. Use to review a conversation, inspect supplied Sources or working files, submit a message to the Chat Operator, or follow a specific run to its result.
+description: Find, create, and continue Playbooks Chats from an editor. Use to review a conversation, inspect supplied Sources or working files, submit a message to the Chat Operator, or follow a specific run to its result. Use for spending questions and publishing this resource to the Marketplace.
 ---
 
 A Chat owns one conversation and a working File system. Use the [resource model](references/resource-model.md) to choose between conversational work, a programmable Agent, and a Project with a working preview. Consult [MCP setup and targeting](references/using-playbooks-mcp.md) for connection details. Chat operations use the optional `workspace` toolset. Inspect enabled schemas with `playbooks_help` and retain the needed default groups when enabling it.
@@ -22,6 +22,14 @@ For an authorized Operator request, submit `playbooks_workspace_message_create` 
 A Source is supplied input. Inspect the relevant Chat Source and its version before copying anything. A requested copy into the Chat File system needs the reviewed destination path and revision. Use `playbooks_workspace_chat_file-system_get` to inspect the working tree before a revision-bound replacement. A retained HTML experience has an Artifact ID and checkpoints; identify the exact checkpoint for a historical export. Use `playbooks_help` to discover the Chat Source and Artifact tools on the current connection.
 
 For Chat lifecycle changes, use `playbooks_workspace_chat_update` with the current revision. Archiving pauses its schedules, and restoration leaves them paused. Deletion requires the exact Chat name and removes its schedules. Re-read the Chat state after a change.
+
+## Usage, budget and ledger
+
+Use Chat Settings → Usage for attributable consumption. Check the owning Workspace budget for its ceiling. Report a Chat-specific figure only when the source identifies the Chat. For creator proceeds, inspect this Chat’s Settings → Ledger in the app. For Workspace-wide credit movements, invoices, settlements or transfers, resolve the owning Workspace and use its corresponding financial tools. Attribute a transaction to this Chat only when its record supports the link.
+
+## Publish a Marketplace Template
+
+Use `playbooks_workspace_chat_template_draft` for the selected Chat; `playbooks_workspace_chat_template_create` creates or returns its draft. Review working file paths and checksums plus eligible retained Artifact editing assets. To verify contents, read the authorized source Chat’s File system and match bytes to inventory checksums. Follow [source review and publication](references/marketplace-publication.md) through version and visibility verification.
 
 ## Worked request
 

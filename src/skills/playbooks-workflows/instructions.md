@@ -1,6 +1,6 @@
 ---
 name: playbooks-workflows
-description: Inspect, create, or revise a Playbooks Workflow draft from an editor. Use for repeatable processes with task dependencies, handoffs, branches, or approvals, and for handing a saved draft to its operator for review.
+description: Inspect, create, or revise a Playbooks Workflow draft from an editor. Use for repeatable processes with task dependencies, handoffs, branches, or approvals, and for handing a saved draft to its operator for review. Use for Workflow usage, spending limits, source ledger and Marketplace publication.
 ---
 
 Read [the MCP guide](references/using-playbooks-mcp.md) for connection setup. Workflow draft tools require the `workspace` toolset. If it is missing, retain the default toolsets when adding it, reconnect, and check the enabled schemas with `playbooks_help`.
@@ -10,6 +10,12 @@ Read [the MCP guide](references/using-playbooks-mcp.md) for connection setup. Wo
 3. Use `dependsOn` for ordering and `inputs` to bind the results a step receives. Declare named results on the producing steps. Tasks that can run in parallel can share a predecessor. For Conditions, declare the supported comparison and map each branch to the required true or false outcome. Bind an Approval's review material and an Output's retained results explicitly. For an Agent step, use structured input bindings only for eligible upstream Chat Artifact results. Declare the Chat's `artifactOutput` as a named result when that exact checkpoint is needed. Check the recipient's authority before passing private data into an Agent or Project conversation. Choose execution limits appropriate to the process and validate the graph against the enabled schema.
 4. Save the authorized private, inactive draft with `playbooks_workspace_workflow_create`. To edit a draft, use `playbooks_workspace_workflow_update` with the reviewed `expectedRevision`. If changing the definition, include the complete graph and any canvas notes to retain. On a revision conflict, read the latest draft and reconcile the proposed edit. After an uncertain creation or update, inspect Workspace drafts or the selected Workflow before retrying.
 5. Report the Workflow ID and saved revision. For a create or update, include the canvas URL from the write receipt. Summarize the trigger, tasks, review gate, deliverable, and unresolved setup. The draft tools stop at authoring. Use the Playbooks app to run the Workflow, enable recurrence, review the exact waiting step, or manage access. The app's History shows the saved revision and step evidence for each run. Check the actual run outcome and result before reporting that the process succeeded.
+
+## Usage, budget and Marketplace
+
+Open Workflow Settings → Usage for attributable consumption. Use run and step evidence when the app provides it. Check applicable Workspace and target-resource budgets for spending limits. An estimate or a configured execution limit cannot establish an actual charge. Workflow Settings → Ledger shows source Marketplace ledger activity to the authorized owner; Workspace settlement records can supply supporting detail.
+
+For an authorized publication, open Workflow Settings → Marketplace and review the graph, redistributable step dependencies and setup before publishing. The recipient gets an inactive draft. Follow [source review and publication](references/marketplace-publication.md).
 
 ## Worked request
 

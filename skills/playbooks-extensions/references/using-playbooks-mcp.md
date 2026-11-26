@@ -8,7 +8,7 @@ For Workflow and Artifact tools in Codex, use this argument list in the existing
 args = ["-y", "@playbooks/mcp@^1.1.0", "--toolsets", "core,operator,discovery,workspace,project"]
 ```
 
-Inspect playbooks_help for enabled tools and their input schemas. Default toolsets are core, operator, and discovery. Project configuration and source operations may require project. Explicit --toolsets replaces the defaults, so retain the groups needed for the task. Restart the MCP connection after changing its configuration. A read-only connection filters out mutations. Server permissions still govern access.
+Inspect playbooks_help for enabled tools and their input schemas. Default toolsets are core, operator, and discovery. Project configuration and source operations may require project. Explicit --toolsets replaces the defaults, so retain the groups needed for the task. For Marketplace draft inspection, publication, or remix, append `templates` to the enabled groups. Restart the MCP connection after changing its configuration. A read-only connection filters out mutations. Server permissions still govern access.
 
 Use `playbooks_workspace_list` to find authorized Workspaces and pass the selected Workspace's returned `uuid` as `workspace`. Existing Project operations also take `project`. Resolve ambiguous names with the developer. Review the target and requested effects before passing `confirm`. Preserve a reviewed revision or idempotency key when the schema requires it. After an uncertain write, inspect the resulting state before retrying.
 

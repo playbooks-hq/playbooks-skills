@@ -10,9 +10,12 @@ Use Playbooks from an MCP-enabled editor. Install the skill for your task or ins
 | `playbooks-agents` | Configure reusable Agents, review caller and resource grants, and follow executions. |
 | `playbooks-projects` | Inspect a Project and work with its Operator. |
 | `playbooks-sites` | Inspect production Sites, review and deploy revisions, and recover retained releases. |
-| `playbooks-templates` | Discover and remix reusable Templates, review draft contents, and publish versions. |
+| `playbooks-marketplace` | Browse public listings and Collections, compare versions, and remix a Template. |
+| `playbooks-extensions` | Discover Files, Designs, Skills, Connectors and MCP servers and verify resource assignments. |
 | `playbooks-workflows` | Inspect, create, and revise Workflow drafts, then open the app to run or activate them. |
 | `playbooks-artifacts` | Locate, prepare, and export exact saved Artifact checkpoints. |
+
+Marketplace replaces the previous `playbooks-templates` install. Install `playbooks-marketplace` for discovery and remix, and use the source resource’s skill for publication.
 
 Each specialist includes the connection and resource guidance it needs to work on its own.
 

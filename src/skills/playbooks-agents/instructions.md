@@ -1,6 +1,6 @@
 ---
 name: playbooks-agents
-description: Configure and operate reusable Playbooks Workspace Agents. Use to inspect Agent permissions and assigned resources, connect a calling application, continue an Agent conversation, or follow an Agent execution and its results.
+description: Configure and operate reusable Playbooks Workspace Agents. Use to inspect Agent permissions and assigned resources, connect a calling application, continue an Agent conversation, or follow an Agent execution and its results. Use for spending questions and publishing this resource to the Marketplace.
 ---
 
 A Workspace Agent is a programmable worker with its own configuration, conversations, grants, and attributable usage. For a temporary helper inside one conversation, use that conversation’s Sub-agent tools. See [resource ownership](references/resource-model.md) and [MCP setup](references/using-playbooks-mcp.md).
@@ -21,6 +21,14 @@ For a new worker, use `playbooks_agent_create` with its purpose, configuration, 
 For an explicitly requested one-off execution, review the Agent, instruction, and usage-bearing action. Call `playbooks_agent_invoke` with a stable idempotency key and the required confirmation. Inspect the returned execution identifier with `playbooks_agent_execution`. After an uncertain submission, reconcile with `playbooks_agent_executions` before retrying. Report the observed state, output or blocker; a receipt alone establishes admission.
 
 For an ongoing conversation, select it through `playbooks_agent_conversations` and inspect its messages. Creating an empty conversation and sending a message are separate actions. Sending work with `playbooks_agent_conversation_send` can incur usage. For recurring work, review instructions, timezone, references and timing. Each occurrence starts a fresh Agent conversation. Use `playbooks_agent_schedule_occurrences` to find the outcome of a particular occurrence.
+
+## Usage, budget and ledger
+
+Use `playbooks_agent_usage` and `playbooks_agent_budget` for the selected Agent. Report period, units, scope and observed limit. Before a requested change, show the current and proposed values. Use `playbooks_agent_budget_update` with the current revision and the authorized fields, then reread the limit. Workspace limits still apply. For creator proceeds, inspect this Agent’s Settings → Ledger in the app. For Workspace-wide credit movements, invoices, settlements or transfers, resolve the owning Workspace and use its corresponding financial tools. Attribute a transaction to this Agent only when its record supports the link.
+
+## Publish a Marketplace Template
+
+Use `playbooks_workspace_agent_template_draft` for the selected Agent; `playbooks_workspace_agent_template_create` creates or returns its draft. Review portable configuration, assignments and recipient setup. Keep original working outputs, application grants and credentials outside the recipient’s setup. Follow [source review and publication](references/marketplace-publication.md) through version and visibility verification.
 
 ## Worked request
 

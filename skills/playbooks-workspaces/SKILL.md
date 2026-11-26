@@ -1,6 +1,6 @@
 ---
 name: playbooks-workspaces
-description: Manage a Playbooks Workspace from an editor. Use for membership and invitations, resource sharing, Workspace settings and connected resources, or questions about Workspace usage and budget.
+description: Manage a Playbooks Workspace from an editor. Use for membership and invitations, resource sharing, Workspace settings and connected resources, or questions about Workspace usage and budget. Use for budget changes, financial ledger records, Enterprise policies and Workspace Template publishing.
 ---
 
 Resolve the target with `playbooks_workspace_list` and pass the selected record’s `uuid` as `workspace`. Ask which Workspace the developer means when names are ambiguous. Someone with direct access to a single resource can find their accepted grants through `playbooks_shared_resources`, including the owning Workspace.
@@ -20,6 +20,18 @@ Use `playbooks_workspace_settings` for Workspace Operator defaults and instructi
 Use `playbooks_workspace_connectors` and `playbooks_workspace_mcps` to inventory configured connections. Use `playbooks_workspace_secrets` for metadata. Keep credentials in the app’s setup flow. Workspace skills returned by `playbooks_workspace_skills` are resources inside Playbooks; editor skills are installed in the developer’s environment.
 
 For spend questions, inspect `playbooks_workspace_usage`, `playbooks_workspace_budget`, or `playbooks_workspace_credits` according to whether the developer needs consumption, a configured limit, or available credit. State the Workspace, period, and units supplied by the response. A request to explain spending authorizes a read.
+
+## Budget and ledger
+
+Read the current Workspace budget before a change. Show the requested credit limit, stop-new-work behavior, thresholds and recipients as applicable. Apply only the authorized fields with `playbooks_workspace_budget_update` and confirmation, then reread the budget. Explain which work the limit governs.
+
+For “why did the balance change?”, start with the requested period and account. Page through `playbooks_workspace_credits` for credit movements, `playbooks_workspace_invoices` for invoices, `playbooks_workspace_settlements` and `playbooks_workspace_settlement` for settlement records, or `playbooks_workspace_transfers` for transfers. Report the returned date, amount, unit, reason, status and ID when available. Keep credits and currency separate; identify missing evidence and the range actually searched. Query Workspace Settings → Ledger in the app for the consolidated view. Use Workspace activity for operational events.
+
+## Governance, publishing and Library
+
+For Enterprise questions, establish the selected Workspace, entitlement and administrator capability. Inspect `playbooks_workspace_resource-retention` through the exact tool name returned by `playbooks_help`. Read the current policy before an authorized retention update and verify it afterward. Use Workspace settings in the app for MFA, SSO, zero data retention, Marketplace policy and audit history when the corresponding control is absent from the connected tools. Report only policies actually observed.
+
+Publish a portable Workspace package from Workspace Settings → Marketplace. Review the included resources and their relationships, governance and setup with the owner. Follow [source review and publication](references/marketplace-publication.md). For saved Marketplace items, open Library in the selected Workspace to manage bookmarks and Collection membership. Confirm the intended Workspace before changing its curation.
 
 ## Worked request
 
