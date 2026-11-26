@@ -1,8 +1,12 @@
 # Connecting and selecting targets
 
-Use Node.js 22.12+ and compatible Playbooks CLI and MCP releases. Authenticate outside the conversation. Run `playbooks login`, then `playbooks status`. With a CLI build that supports browser sign-in, review the account and requested access in Playbooks and return to the terminal. CLI 1.0.0 prompts for a scoped developer API key from Account settings. Register the local stdio server with `playbooks mcp install codex` (or `claude`, `cursor`, `vscode`) and reconnect the client. Keep tokens in CLI configuration or a secret manager.
+Install the Playbooks CLI with `npm install --global @playbooks/cli@^1.1.0` on Node.js 22.12 or newer. The skills installer requires Node.js 22.20 or newer. Authenticate outside the conversation with `playbooks login`, complete browser sign-in, and run `playbooks status`. Register the stdio server with `playbooks mcp install codex` (or `claude`, `cursor`, `vscode`). Keep tokens in CLI configuration or a secret manager.
 
-The npm 1.0.0 clients cover basic Workspace and Project reads. Workflow drafts, retained Artifacts, and some Chat, Agent, Site, and Template operations need newer Clients code. The [public Clients staging branch](https://github.com/playbooks-hq/playbooks-clients/tree/staging) contains these changes. With a compatible source build, configure the editor to run that build's MCP executable alongside its matching CLI. The registration command above selects the npm MCP package.
+For Workflow and Artifact tools in Codex, use this argument list in the existing `[mcp_servers.playbooks]` entry in `~/.codex/config.toml`, then reconnect:
+
+```toml
+args = ["-y", "@playbooks/mcp@^1.1.0", "--toolsets", "core,operator,discovery,workspace,project"]
+```
 
 Inspect playbooks_help for enabled tools and their input schemas. Default toolsets are core, operator, and discovery. Project configuration and source operations may require project. Explicit --toolsets replaces the defaults, so retain the groups needed for the task. Restart the MCP connection after changing its configuration. A read-only connection filters out mutations. Server permissions still govern access.
 
